@@ -18,13 +18,13 @@ def get_page_text(URL):
         return r.text
 
 
-def process_page_text(text, text_format, tags_array):
+def process_page_text(text, text_format, tags_list):
     """
     Process text web page.
     Arguments:
         - text: str, text of web page;
-        - text_format: format of text ('json' or 'xml');
-        - tags_array: array of tuples (tag, value). 
+        - text_format: str, format of text ('json' or 'xml');
+        - tags_list: list, list of tuples (tag, value). 
             Appropriate values for value parameter in tuple:
                 - 'all': find all entries connected with this tag;
                 - 'one': find first entry connected with this tag;
@@ -46,7 +46,7 @@ def process_page_text(text, text_format, tags_array):
 
     result_dict = {}
 
-    for tag, value in tags_array:
+    for tag, value in tags_list:
 
         if value == 'all':
             tag_list = data_xml.findall(".//" + tag)
